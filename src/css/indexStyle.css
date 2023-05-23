@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family:'Open Sans', sans-serif;
+    box-sizing: border-box;
+}
+
+body{
+    background: #000;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.container{
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#hexagonAnimation{
+    top: 0;
+    left: 0;
+}
+
+.row{
+    display: inline-flex;
+    margin-top: -32px;
+    margin-left: -50px;
+}
+
+.row:nth-child(even){
+    margin-left: 1px;
+}
+
+.hexagon{
+    position: relative;
+    width: 100px;
+    height: 110px;
+    background: #111;
+    margin: 2px;
+    clip-path: polygon(50% 0%,100% 25%, 100% 75%,50% 100%, 0% 75%, 0% 25%);
+    transition: 2s;
+}
+
+.hexagon::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    pointer-events: none;
+    background: rgba(255, 255, 255, 0.02);
+    z-index: 1000;
+}
+
+#cursor{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: #0f0;
+    transform: translate(-50%,-50%);
+    animation: animate 4s linear infinite;
+}
+
+@keyframes animate{
+    0%{
+        filter: hue-rotate(0deg) blur(50px);
+    }
+    100%{
+        filter: hue-rotate(360deg) blur(50px);
+    }
+}
+
+@keyframes animateScreamSmall{
+    0%{
+        filter: hue-rotate(0deg) ;
+    }
+    100%{
+        filter: hue-rotate(360deg) ;
+    }
+}
+
+.login{
+    position: absolute;
+    color: #fff;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 400px;
+    margin: 0;
+    background: transparent;
+    box-shadow: 0px 0px 0px 2px rgba(241, 239, 239, 0.993);
+    border-radius: 10px;
+    backdrop-filter: blur(50px);
+}
+
+.login-form {
+    background: transparent;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+  }
+
+  .login-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .login-form .input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .login-form .input-group input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+
+  .login-form .input-group ion-icon {
+    margin-right: 10px;
+    font-size: 25px;
+  }
+
+  .login-form .checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .login-form .checkbox-group label {
+    margin-left: 5px;
+  }
+
+  .login-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: gray;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .login-form button:hover {
+    background-color:rgb(85, 84, 84);
+  }
+
+  .login-form .links {
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  .login-form .links a{
+    color: white;
+  }
+
+  .login-form .links a:hover{
+    color: yellow;
+  }
+
+  @media (max-width:980px){
+    .login{
+        width: 100%;
+        height: 100vh;
+        background: transparent;
+        box-shadow: none;
+        backdrop-filter: blur(5px);
+    }
+
+    #cursor{
+        width: 0;
+        height: 0;
+    }
+
+    .container{
+        overflow: hidden;
+        background: #0f0;
+        animation: animateScreamSmall 5s linear infinite; 
+    }
+
+    .login-form button{
+        box-shadow: 0px 0px 0px 2px rgba(241, 239, 239, 0.993); 
+    }
+  }
+
+  .error {
+    box-shadow: 0 0 15px rgba(241, 5, 5, 0.952);
+  }
